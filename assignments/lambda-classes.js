@@ -4,49 +4,79 @@ function randomNum(min, max) {
     return Math.random() * (max - min) + min;
 }
 
+function displayEach(arr) {
+    for (i = 0; i < arr.length; ++i) {
+        console.log(arr[i])
+    }
+}
+
 class Person {
-    constructor(aPerson){
+    constructor(aPerson) {
         this.name = aPerson.name;
         this.age = aPerson.age;
         this.location = aPerson.location;
     }
-speak(){return `Hello my name is ${this.name} I am from ${this.location}`}
+    speak() {
+        return `Hello my name is ${this.name} I am from ${this.location}`
+    }
 }
 
 class Instructor extends Person {
-    constructor(anInstructor){
+    constructor(anInstructor) {
         super(anInstructor);
         this.specialty = anInstructor.specialty;
         this.favLanguage = anInstructor.favLanguage;
         this.catchPhrase = anInstructor.catchPhrase;
-    }   
-demo(subject){return `Today we are learning about ${subject}`};
-grade(student, subject){return `${student.name} received a perfect score on ${subject}!`}
-refactorGrade(student, number){return student.grade = student.grade - randomNum(1, 100)}
+    }
+    demo(subject) {
+        return `Today we are learning about ${subject}`
+    };
+    grade(student, subject) {
+        return `${student.name} received a perfect score on ${subject}!`
+    }
+    refactorGrade(student, number) {
+        return student.grade = student.grade - randomNum(1, 100)
+    }
 }
 
 class Student extends Person {
-    constructor(aStudent){
+    constructor(aStudent) {
         super(aStudent);
         this.previousBackground = aStudent.previousBackground;
         this.className = aStudent.className;
         this.favSubject = aStudent.favSubject;
         this.grade = aStudent.grade;
     }
-listsSubjects(){return this.favSubject.toString()}
-PRAssignment(subject){return `${this.name} has submitted a PR for ${subject}`}
-sprintChallenge(subject){return `${this.name} has begun a Sprint Challenge on ${subject}`}
-graduate(){if(this.grade >= 70) {return `${this.name} has graduated! Yeet!`} else {return `${this.name} flunked out. Time to flex!`}}
+    listsSubjects() {
+        return displayEach(this.favSubject)
+    }
+    PRAssignment(subject) {
+        return `${this.name} has submitted a PR for ${subject}`
+    }
+    sprintChallenge(subject) {
+        return `${this.name} has begun a Sprint Challenge on ${subject}`
+    }
+    graduate() {
+        if (this.grade >= 70) {
+            return `${this.name} has graduated! Yeet!`
+        } else {
+            return `${this.name} flunked out. Time to flex!`
+        }
+    }
 }
 
 class ProjectManager extends Instructor {
-    constructor(aPM){
+    constructor(aPM) {
         super(aPM);
         this.gradClassName = aPM.gradClassName;
         this.favInstructor = aPM.favInstructor;
     }
-standUp(channel){return `${this.name} anounces to ${channel}, @channel standy times!`}
-debugsCode(student, subject){return `${this.name} debugs ${student.name}'s code on ${subject}`}
+    standUp(channel) {
+        return `${this.name} anounces to ${channel}, @channel standy times!`
+    }
+    debugsCode(student, subject) {
+        return `${this.name} debugs ${student.name}'s code on ${subject}`
+    }
 }
 
 const dak = new Student({
@@ -121,4 +151,3 @@ console.log(austin.debugsCode(dak, `JavaScript`))
 
 henry.refactorGrade(dak)
 console.log(dak.graduate())
-
