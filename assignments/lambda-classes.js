@@ -1,13 +1,5 @@
 // CODE here for your Lambda Classes
 
-// #### Stretch Problem
-
-// * Extend the functionality of the Student by adding a prop called grade and setting it equal to a number between 1-100.
-// * Now that our students have a grade build out a method on the Instructor (this will be used by _BOTH_ instructors and PM's) that will randomly add or subtract points to a student's grade. _Math.random_ will help.
-// * Add a graduate method to a student.
-//   * This method, when called, will check the grade of the student and see if they're ready to graduate from Lambda School
-//   * If the student's grade is above a 70% let them graduate! Otherwise go back to grading their assignments to increase their score.
-
 function randomNum(min, max) {
     return Math.random() * (max - min) + min;
 }
@@ -64,7 +56,17 @@ const dak = new Student({
     previousBackground: `none`,
     className: 'Web21',
     favSubject: ['JavaScript', 'FlexBox', 'CSS'],
-    grade: 99
+    grade: 90
+});
+
+const jim = new Student({
+    name: `Jim`,
+    age: 33,
+    location: `Des Moines`,
+    previousBackground: `3+ years in IT`,
+    className: 'Web21',
+    favSubject: ['C#', 'C++'],
+    grade: 85
 });
 
 const dan = new Instructor({
@@ -76,13 +78,47 @@ const dan = new Instructor({
     catchPhrase: 'I spilled my coffee!'
 });
 
+const ryan = new Instructor({
+    name: 'Ryan',
+    age: 30,
+    location: 'San Francisco',
+    specialty: 'Recording videos',
+    favLanguage: 'JavaScript',
+    catchPhrase: 'Foo is equal to bar.'
+});
+
 const henry = new ProjectManager({
     name: 'Henry',
     age: 24,
-    location: 'New York',
     gradClassName: `Web18`,
-    favInstructor: 'Josh Knell'
+    favInstructor: 'Josh Knell',
+    location: 'New York',
+    specialty: 'React/Redux',
+    favLanguage: 'Redux',
+    catchPhrase: 'Those people are psychopaths.'
 });
+
+const austin = new ProjectManager({
+    name: 'Austin',
+    age: '23',
+    gradClassName: 'WEB18',
+    favInstructor: 'Josh knell',
+    location: 'Somewhere',
+    specialty: 'Java',
+    favLanguage: 'Java',
+    catchPhrase: ":eggplant:",
+});
+
+console.log(dak.listsSubjects())
+console.log(jim.PRAssignment(`Class Constructors`))
+console.log(dak.sprintChallenge(`C++`))
+
+console.log(dan.demo(`Ruby`))
+console.log(ryan.grade(jim, `Python`))
+
+console.log(henry.standUp(`#web21_henry`))
+console.log(austin.debugsCode(dak, `JavaScript`))
 
 henry.refactorGrade(dak)
 console.log(dak.graduate())
+
