@@ -59,4 +59,57 @@ class Instructor extends Person {
         this.favLanguage = anInstructor.favLanguage;
         this.catchPhrase = anInstructor.catchPhrase;
     }   
+demo(subject){return `Today we are learning about ${subject}`};
+grade(student, subject){return `${student.name} received a perfect score on ${subject}!`}
 }
+
+class Student extends Person {
+    constructor(aStudent){
+        super(aStudent);
+        this.previousBackground = aStudent.previousBackground;
+        this.className = aStudent.className;
+        this.favSubject = aStudent.favSubject;
+    }
+listsSubjects(){return this.favSubject}
+PRAssignment(subject){return `${this.name} has submitted a PR for ${subject}`}
+sprintChallenge(subject){return `${this.name} has begun a Sprint Challenge on ${subject}`}
+}
+
+class ProjectManager extends Instructor {
+    constructor(aPM){
+        super(aPM);
+        this.gradClassName = aPM.gradClassName;
+        this.favInstructor = aPM.favInstructor;
+    }
+standUp(channel){return `${this.name} anounces to ${channel}, @channel standy times!`}
+debugsCode(student, subject){return `${this.name} debugs ${student.name}'s code on ${subject}`}
+}
+
+const dak = new Student({
+    name: `Dakota`,
+    age: 21,
+    location: `Indianapolis`,
+    previousBackground: `none`,
+    className: 'Web21',
+    favSubject: 'JavaScript'
+});
+
+const dan = new Instructor({
+    name: 'Dan',
+    age: 28,
+    location: 'Colorado?',
+    specialty: 'Instructing',
+    favLanguage: 'Java',
+    catchPhrase: 'I spilled my coffee!'
+});
+
+const henry = new ProjectManager({
+    name: 'Henry',
+    age: 24,
+    location: 'New York',
+    gradClassName: `Web18`,
+    favInstructor: 'Josh Knell'
+});
+
+console.log(henry.debugsCode(dak, 'JavaScript'))
+console.log(dan.grade(dak, 'Python'))
